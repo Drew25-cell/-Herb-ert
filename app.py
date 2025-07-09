@@ -50,6 +50,6 @@ st.sidebar.subheader("Recent Herbs Searched")
 for past in reversed(st.session.state.history[-5:]):
     st.sidebar.write(past)
     
-except Exception as e:
-    st.error("Something went wrong.")
-    st.code(str(e))
+    except Exception as e:
+        st.error("Something went wrong.")
+        st.code(str(e))
