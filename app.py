@@ -27,7 +27,6 @@ if "history" not in st.session_state:
     st.session_state.history = []
     
 if herb:
-    if herb:
     # ✅ Save herb to history
     st.session_state.history.append(herb)
 
