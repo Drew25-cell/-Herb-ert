@@ -30,14 +30,15 @@ if herb:
     # ✅ Save herb to history
     st.session_state.history.append(herb)
 
-    # ✅ OpenAI call
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are an expert herbalist..."},
-            {"role": "user", "content": f"What is {herb} used for in herbal medicine?"},
-        ],
-    )
+    try:
+        # ✅ OpenAI call
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert herbalist..."},
+                {"role": "user", "content": f"What is {herb} used for in herbal medicine?"},
+            ],
+        )
 
     answer = response.choices[0].message["content"]
 
@@ -50,6 +51,6 @@ st.sidebar.subheader("Recent Herbs Searched")
 for past in reversed(st.session.state.history[-5:]):
     st.sidebar.write(past)
     
-except Exception as e:
-st.error("Something went wrong.")
+    except Exception as e:
+        st.error("Something went wrong.")
 
