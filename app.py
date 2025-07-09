@@ -23,28 +23,28 @@ st.markdown(
 # Input
 herb = st.text_input("Herb name (e.g., Ashwagandha, Turmeric):")
 
-if herb:
-    with st.spinner("Searching..."):
-        try:
-            prompt = (
-                f"You are a certified herbalist. Give a short, accurate explanation "
-                f"of {herb}, including traditional use, scientific context, and any known safety concerns. "
-                f"Keep it under 150 words. Avoid making medical claims."
-            )
-
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}]
-            )
-
-            st.success("Here’s what we found:")
-            st.write(response.choices[0].message["content"])
-
 if "history" not in st.session_state:
     st.session_state.history = []
+    
+if herb:
+    if herb:
+    # ✅ Save herb to history
+    st.session_state.history.append(herb)
 
-# Save to history
-st.session_state.history.append(herb)
+    # ✅ OpenAI call
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are an expert herbalist..."},
+            {"role": "user", "content": f"What is {herb} used for in herbal medicine?"},
+        ],
+    )
+
+    answer = response.choices[0].message["content"]
+
+    # ✅ Show response
+    st.markdown(f"### ✳️ {herb.title()}")
+    st.write(answer)
 
 # Show history
 st.sidebar.subheader("Recent Herbs Searched")
