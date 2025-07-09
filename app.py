@@ -43,11 +43,11 @@ if herb:
         answer = response.choices[0].message["content"]
 
     # ✅ Show response
-    st.markdown(f"### ✳️ {herb.title()}")
-    st.write(answer)
+        st.markdown(f"### ✳️ {herb.title()}")
+        st.write(answer)
 
 # Show history
-st.sidebar.subheader("Recent Herbs Searched")
+    st.sidebar.subheader("Recent Herbs Searched")
 for past in reversed(st.session.state.history[-5:]):
     st.sidebar.write(past)
     
