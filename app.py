@@ -16,7 +16,7 @@ st.markdown(
     - Scientific context
     - Known safety info
 
-    _Built with OpenAI + Streamlit for ingredient transparency & wellness tech._
+  
     """
 )
 
