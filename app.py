@@ -53,4 +53,5 @@ if herb:
     
     except Exception as e:
         st.error("Something went wrong.")
+        st.caption(f"Error: {e}")
 
