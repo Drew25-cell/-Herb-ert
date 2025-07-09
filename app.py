@@ -40,7 +40,7 @@ if herb:
             ],
         )
 
-    answer = response.choices[0].message["content"]
+        answer = response.choices[0].message["content"]
 
     # ✅ Show response
     st.markdown(f"### ✳️ {herb.title()}")
