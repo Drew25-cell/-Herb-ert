@@ -5,9 +5,20 @@ import openai
 # Load your API key securely from secrets
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.set_page_config(page_title="🌿 Herbal Ingredient Explainer")
-st.title("🌿 Herbal Ingredient Explainer")
-st.write("Enter the name of an herb to get a clear, concise explanation.")
+st.set_page_config(page_title="🌿 HerbIntel — AI Ingredient Explainer", page_icon="🌱")
+
+st.title("🌿 HerbIntel — AI Ingredient Explainer")
+st.markdown(
+    """
+    Welcome to **HerbIntel**, your AI-powered herbal supplement assistant.  
+    Type the name of any herbal ingredient to get a concise explanation, including:
+    - Traditional uses
+    - Scientific context
+    - Known safety info
+
+    _Built with OpenAI + Streamlit for ingredient transparency & wellness tech._
+    """
+)
 
 # Input
 herb = st.text_input("Herb name (e.g., Ashwagandha, Turmeric):")
